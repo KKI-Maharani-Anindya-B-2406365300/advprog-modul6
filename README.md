@@ -46,5 +46,10 @@ With the `ThreadPool`, I pass each incoming connection as a job through `execute
 This allows the server to process multiple requests at the same time. As a result, a slow request no longer blocks other requests, which makes the server more responsive.
 I also learned that using a thread pool is more efficient than creating a new thread for every request, since it reuses a fixed number of worker threads and manages tasks through a queue.
 
+# Commit Bonus Reflection Notes
 
+In this step, I introduced a `build` function as an alternative to `new` for creating a `ThreadPool`. The main difference between the two lies in how they handle invalid input.
+The `new` function uses `assert!`, which will cause the program to panic if the given size is zero. In contrast, the `build` function returns a `Result`, allowing errors to be handled more safely without crashing the program.
+By using `Result`, the `build` function provides better control over error handling and makes the code more robust. This approach is more suitable for real-world applications, where unexpected input should be handled gracefully instead of terminating the program.
+This improvement shows how a function can be redesigned to provide safer and more flexible behavior while maintaining the same core functionality.
 
