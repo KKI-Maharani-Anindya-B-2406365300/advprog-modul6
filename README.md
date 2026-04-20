@@ -39,4 +39,12 @@ This step highlights the limitation of a single-threaded server and the need for
 
 ![Commit 4 screen capture](/assets/images/commit4.png)
 
+# Commit 5 Reflection Notes
+
+In this step, I improved the server by introducing a `ThreadPool` to handle multiple requests concurrently. Previously, the server processed requests one at a time, so a slow request such as `/sleep` would block other incoming requests.
+With the `ThreadPool`, I pass each incoming connection as a job through `execute`, and it is handled by one of the worker threads. Each worker continuously listens for jobs from a shared channel and executes them independently.
+This allows the server to process multiple requests at the same time. As a result, a slow request no longer blocks other requests, which makes the server more responsive.
+I also learned that using a thread pool is more efficient than creating a new thread for every request, since it reuses a fixed number of worker threads and manages tasks through a queue.
+
+
 
