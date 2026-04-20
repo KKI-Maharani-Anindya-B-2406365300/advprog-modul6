@@ -20,3 +20,13 @@ This step shows that a web server must return a properly formatted HTTP response
 
 ![Commit 2 screen capture](/assets/images/commit2.png)
 
+# Commit 3 Reflection Notes
+
+In this step, the server was updated so it no longer returns the same response for every request. Instead, it now checks the request path and responds with different HTML pages depending on whether the request is valid.
+The main change is in how the request line is handled and validated. The program now reads the first line of the HTTP request safely and compares it with `GET / HTTP/1.1` to determine the appropriate response.
+Another important change is in how the response is constructed. Instead of selecting only the filename, the code now directly selects both the status line and the file contents at the same time. This simplifies the logic and reduces unnecessary steps.
+The response is structured into three parts: the status line, headers (such as `Content-Length`), and the body. These parts are combined into a single formatted string before being sent back to the browser.
+Refactoring is needed at this stage because the response logic is becoming more complex. By organizing how the response is selected and built, the code becomes easier to read, maintain, and extend.
+
+![Commit 3 screen capture](/assets/images/commit3.png)
+
