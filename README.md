@@ -30,3 +30,13 @@ Refactoring is needed at this stage because the response logic is becoming more 
 
 ![Commit 3 screen capture](/assets/images/commit3.png)
 
+# Commit 4 Reflection Notes
+
+In this step, the server was updated to simulate a slow request by adding a `/sleep` route. When this route is accessed, the server delays the response for 10 seconds using `thread::sleep`.
+When tested using multiple browser tabs, it can be observed that other requests are also delayed while `/sleep` is being processed. This shows that the server can only handle one request at a time.
+This happens because the server runs on a single thread, so requests are processed sequentially. As a result, one slow request can block all others.
+This step highlights the limitation of a single-threaded server and the need for a more efficient way to handle multiple requests.
+
+![Commit 4 screen capture](/assets/images/commit4.png)
+
+
